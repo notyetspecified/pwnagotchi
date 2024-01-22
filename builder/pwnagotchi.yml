@@ -109,6 +109,7 @@
           - fonts-ipaexfont-gothic
           - cryptsetup
           - dnsmasq
+          - debconf-utils
 
   tasks:
   - name: change hostname
@@ -139,7 +140,7 @@
 
   - name: Add re4son-kernel repository
     apt_repository:
-      repo: deb http://http.re4son-kernel.com/re4son/ kali-pi main
+      repo: deb [trusted=yes] http://http.re4son-kernel.com/re4son/ kali-pi main
       state: present
 
   - name: create /etc/apt/preferences.d/kali.pref
@@ -181,6 +182,17 @@
     file:
       path: /etc/dphys-swapfile
       content: "CONF_SWAPSIZE=1024"
+
+  - name: Open I2C interface
+    shell: "raspi-config nonint do_i2c 0"
+    args:
+      executable: /bin/bash
+
+  - name: Configure Pisugar
+    shell: "./install.sh"
+    args:
+      executable: /bin/bash
+      chdir: /opt/pisugar
 
   - name: clone papirus repository
     git:
@@ -228,7 +240,7 @@
 
   - name: clone pwnagotchi repository
     git:
-      repo: https://github.com/evilsocket/pwnagotchi.git
+      repo: https://github.com/notyetspecified/pwnagotchi.git
       dest: /usr/local/src/pwnagotchi
     register: pwnagotchigit
 

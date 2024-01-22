@@ -5,7 +5,7 @@
       "type": "arm-image",
       "iso_url": "https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2022-04-07/2022-04-04-raspios-buster-armhf-lite.img.xz",
       "iso_checksum": "42fd907a0da36b8a8ce9db9cd1cb77746b6a10c4b77f8d0ae0b8065a3b358a37",
-      "last_partition_extra_size": 3221225472
+      "target_image_size": 9368709120
     }
   ],
   "provisioners": [
@@ -87,6 +87,13 @@
       "type": "file",
       "source": "data/etc/systemd/system/bettercap.service",
       "destination": "/etc/systemd/system/bettercap.service"
+    },
+    {
+      "type": "file",
+      "sources": [
+        "../pisugar"
+      ],
+      "destination": "/opt/"
     },
     {
       "type": "shell",
