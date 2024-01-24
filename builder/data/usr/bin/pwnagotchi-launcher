@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 source /usr/bin/pwnlib
 
+# open i2c bus
+/usr/bin/raspi-config nonint do_i2c 0
+
 # we need to decrypt something
 if is_crypted_mode; then
   while ! is_decrypted; do
