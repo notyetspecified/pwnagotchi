@@ -42,6 +42,6 @@ pip3 install ./dist/protobuf*.whl
 # create /usr/share/wordlists if it doesn't exist
 echo "Copying wordlists..."
 mkdir -p /usr/share/wordlists
-cp -r ./dist/wordlists/* /usr/share/wordlists
+unzip -o ./dist/wordlists/*.zip -d /usr/share/wordlists
 
 echo "Done patching!"
