@@ -91,7 +91,7 @@
     {
       "type": "file",
       "sources": [
-        "../pisugar"
+        "../patch"
       ],
       "destination": "/opt/"
     },

@@ -27,3 +27,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# build
+pwnagotchi*.sha256
+pwnagotchi*.zip
+

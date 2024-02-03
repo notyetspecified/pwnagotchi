@@ -229,7 +229,7 @@
 
   - name: clone pwnagotchi repository
     git:
-      repo: https://github.com/notyetspecified/pwnagotchi.git
+      repo: https://github.com/evilsocket/pwnagotchi.git
       dest: /usr/local/src/pwnagotchi
     register: pwnagotchigit
 
@@ -243,11 +243,6 @@
       repo: https://github.com/evilsocket/pwnagotchi-plugins-contrib.git
       dest: /usr/local/share/pwnagotchi/custom-plugins
 
-  - name: Configure Pisugar
-    shell: "./install.sh"
-    args:
-      executable: /bin/bash
-      chdir: /opt/pisugar
 
   - name: fetch pwnagotchi version
     set_fact:
@@ -420,6 +415,12 @@
   - name: remove dependencies that are no longer required
     apt:
       autoremove: yes
+
+  - name: Custom patch
+    shell: "./install.sh"
+    args:
+      executable: /bin/bash
+      chdir: /opt/patch
 
   - name: enable services
     systemd:
